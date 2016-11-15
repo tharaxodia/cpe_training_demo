@@ -12,5 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $list = \App\Lesson::all();
+    return view('home', [
+        'list' => $list
+    ]);
+})->name('home');
+
+Route::resource('lesson', 'LessonController');
